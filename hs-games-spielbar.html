@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f3ff">
+<title>HS-Games – Kostenlos spielen</title>
+<style>
+:root{--ink:#18213f;--muted:#77809c;--purple:#7954ec;--deep:#6540dc;--lav:#f0eaff;--white:#fff;--shadow:0 12px 34px #4c38891a}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:Inter,ui-rounded,"Segoe UI",system-ui,sans-serif;background:radial-gradient(circle at 8% 0%,#eee5ff,transparent 30%),radial-gradient(circle at 95% 12%,#e2f8ff,transparent 26%),#faf9ff}
+button,input{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+header{padding:20px 0}.nav{display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-size:1.4rem;font-weight:900}.mark{width:42px;height:42px;display:grid;place-items:center;border-radius:15px;color:white;font-size:23px;background:linear-gradient(145deg,#9a71ff,#6342df);box-shadow:0 7px 16px #8665e755}
+.navlinks{display:flex;gap:8px}.navlinks a{color:var(--muted);text-decoration:none;padding:10px 13px;border-radius:14px;font-weight:700}.navlinks a:hover{color:var(--purple);background:var(--lav)}
+.btn{border:0;border-radius:999px;padding:12px 18px;background:var(--purple);color:white;font-weight:800;box-shadow:0 7px 16px #7954ec38}.btn:hover{background:var(--deep)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:28px;padding:38px 0 30px}.tag{display:inline-block;color:var(--purple);background:var(--lav);border-radius:999px;padding:8px 13px;font-size:.85rem;font-weight:800}
+h1{font-size:clamp(2.7rem,6vw,4.8rem);line-height:1.02;letter-spacing:-3px;margin:18px 0}h1 span{color:var(--purple)}.hero p{max-width:520px;color:var(--muted);font-size:1.08rem;line-height:1.7}
+.heroart{min-height:260px;border-radius:34px;display:grid;place-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#d9ccff,#b8eaff 58%,#ffe1ef);box-shadow:var(--shadow);font-size:clamp(7rem,16vw,12rem)}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:30px 0 17px}h2{margin:0;font-size:1.6rem;letter-spacing:-.7px}.sectionhead p{color:var(--muted);margin:6px 0 0}
+.search{width:100%;padding:15px 18px;border:1px solid #eeeaf8;border-radius:17px;background:white;outline:none;margin:0 0 14px}.search:focus{border-color:#b9a7ff;box-shadow:0 0 0 4px #7954ec18}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.filter{border:1px solid #eeeaf8;background:white;color:var(--muted);border-radius:999px;padding:9px 15px;font-weight:750}.filter.active,.filter:hover{background:var(--purple);color:white;border-color:var(--purple)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.game{background:white;border:1px solid #f0edf8;border-radius:23px;padding:12px;box-shadow:0 8px 24px #56418c0b;transition:.2s}.game:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.art{height:145px;border-radius:17px;display:grid;place-items:center;font-size:4.5rem}.blue{background:linear-gradient(135deg,#a8e8ff,#7bb9ff)}.pink{background:linear-gradient(135deg,#ffd4e4,#ff9ebf)}.yellow{background:linear-gradient(135deg,#fff0a8,#ffc66c)}.green{background:linear-gradient(135deg,#c5f4d5,#70d6b0)}.purple{background:linear-gradient(135deg,#dfd0ff,#a88aff)}.orange{background:linear-gradient(135deg,#ffd5aa,#ff9b76)}
+.ginfo{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 3px 3px}.ginfo h3{margin:0 0 4px;font-size:1rem}.ginfo small{color:var(--muted)}.rating{color:#e9a51d;font-weight:800;font-size:.85rem;white-space:nowrap}.play{width:40px;height:40px;flex:none;border:0;border-radius:14px;background:var(--lav);color:var(--purple);font-weight:900}.play:hover{background:var(--purple);color:white}
+.banner{display:flex;align-items:center;gap:15px;margin:32px 0 48px;padding:20px 24px;border-radius:24px;background:linear-gradient(100deg,#f0eaff,#fff0f5)}.banner b{display:block}.banner span{color:var(--muted);font-size:.93rem}
+footer{border-top:1px solid #eeeaf8;padding:23px 0 32px;color:var(--muted);font-size:.9rem}
+.overlay{position:fixed;inset:0;background:#17132cbb;display:none;place-items:center;padding:14px;z-index:5}.overlay.show{display:grid}.gamebox{width:min(760px,100%);max-height:95vh;overflow:auto;background:#fff;border-radius:25px;padding:20px;box-shadow:0 25px 80px #100b2b66}.gamehead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.gamehead h2{font-size:1.35rem}.close{border:0;background:var(--lav);color:var(--ink);border-radius:50%;width:38px;height:38px;font-size:1.3rem}.gamearea{background:linear-gradient(145deg,#f7f3ff,#edfaff);border-radius:19px;min-height:320px;padding:16px;display:grid;place-items:center;position:relative}.gamebar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0;color:var(--muted);font-weight:750}.gamebar strong{color:var(--purple)}.hint{color:var(--muted);font-size:.9rem;text-align:center;margin:10px 0 0}.action{border:0;border-radius:14px;background:var(--purple);color:#fff;padding:11px 17px;font-weight:800}.action.secondary{background:#ebe5ff;color:var(--purple)}
+.bubblefield{width:100%;min-height:280px;display:flex;align-content:center;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px}.bubble{width:58px;height:58px;border:0;border-radius:50%;font-size:1.7rem;background:radial-gradient(circle at 30% 25%,white,#ffc5df 60%,#ec83b6);box-shadow:0 5px 10px #9e5b8a30}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(48px,75px));gap:10px;justify-content:center}.tile{height:65px;border:0;border-radius:15px;box-shadow:0 5px 12px #0001}.target{font-size:1.2rem;font-weight:900;text-align:center;margin-bottom:16px}
+canvas{max-width:100%;background:linear-gradient(#c8efff,#f5fbff);border-radius:15px;touch-action:manipulation}.controls{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}.controls button{min-width:48px}.result{font-size:1.2rem;font-weight:900;color:var(--purple);text-align:center}
+@media(max-width:740px){.navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:20px}.heroart{min-height:190px}.grid{grid-template-columns:repeat(2,1fr)}.art{height:115px;font-size:3.7rem}.gamebox{padding:14px}.gamearea{min-height:290px}}
+@media(max-width:420px){.wrap{width:calc(100% - 22px)}.grid{gap:10px}.game{padding:8px}.art{height:95px;font-size:3rem}.ginfo h3{font-size:.88rem}.rating{font-size:.75rem}h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><div class="brand"><div class="mark">🎮</div>HS-Games</div><nav class="navlinks"><a href="#start">Start</a><a href="#spiele">Spiele</a><a href="#kategorien">Kategorien</a></nav><a class="btn" href="#spiele" style="text-decoration:none">Jetzt spielen</a></div></header>
+<main class="wrap" id="start">
+<section class="hero"><div><span class="tag">✨ Deine Spielewelt</span><h1>Kleine Pause.<br><span>Großer Spaß.</span></h1><p>Entdecke deine neuen Lieblingsspiele. Einfach auswählen, losspielen und Spaß haben – kostenlos und direkt im Browser.</p><a class="btn" href="#spiele" style="display:inline-block;text-decoration:none">Spiele entdecken →</a></div><div class="heroart">🎮</div></section>
+<section id="spiele"><div class="sectionhead"><div><h2>Finde dein nächstes Spiel</h2><p>Sechs kleine Spiele – direkt hier spielbar.</p></div><span class="tag">💜 Kostenlos</span></div>
+<input class="search" id="search" placeholder="⌕  Spiele suchen …" aria-label="Spiele suchen">
+<div class="filters" id="kategorien"><button class="filter active" data-cat="Alle">Alle</button><button class="filter" data-cat="Puzzle">🧩 Puzzle</button><button class="filter" data-cat="Abenteuer">🌍 Abenteuer</button><button class="filter" data-cat="Rennen">🏎️ Rennen</button><button class="filter" data-cat="Geschicklichkeit">🎯 Geschicklichkeit</button></div>
+<div class="grid" id="grid">
+<article class="game" data-name="Bubble Pop" data-cat="Puzzle"><div class="art pink">🫧</div><div class="ginfo"><div><h3>Bubble Pop</h3><small>Puzzle · Reaktion</small></div><span class="rating">★ 4.8</span><button class="play" data-game="bubble" aria-label="Bubble Pop spielen">▶</button></div></article>
+<article class="game" data-name="Blocky Adventure" data-cat="Abenteuer"><div class="art blue">🧱</div><div class="ginfo"><div><h3>Blocky Adventure</h3><small>Abenteuer · Springen</small></div><span class="rating">★ 4.9</span><button class="play" data-game="blocky" aria-label="Blocky Adventure spielen">▶</button></div></article>
+<article class="game" data-name="Turbo Drift" data-cat="Rennen"><div class="art yellow">🏎️</div><div class="ginfo"><div><h3>Turbo Drift</h3><small>Rennen · Ausweichen</small></div><span class="rating">★ 4.6</span><button class="play" data-game="turbo" aria-label="Turbo Drift spielen">▶</button></div></article>
+<article class="game" data-name="Ninja Dash" data-cat="Geschicklichkeit"><div class="art purple">🥷</div><div class="ginfo"><div><h3>Ninja Dash</h3><small>Geschicklichkeit</small></div><span class="rating">★ 4.7</span><button class="play" data-game="ninja" aria-label="Ninja Dash spielen">▶</button></div></article>
+<article class="game" data-name="Color Match" data-cat="Puzzle"><div class="art green">🎨</div><div class="ginfo"><div><h3>Color Match</h3><small>Puzzle · Farben</small></div><span class="rating">★ 4.5</span><button class="play" data-game="color" aria-label="Color Match spielen">▶</button></div></article>
+<article class="game" data-name="Maze Master" data-cat="Geschicklichkeit"><div class="art orange">🌀</div><div class="ginfo"><div><h3>Maze Master</h3><small>Labyrinth · Logik</small></div><span class="rating">★ 4.6</span><button class="play" data-game="maze" aria-label="Maze Master spielen">▶</button></div></article>
+</div><p id="empty" style="display:none;color:var(--muted)">Keine Spiele gefunden.</p></section>
+<aside class="banner"><div style="font-size:2rem">💖</div><div><b>100 % kostenlos spielen</b><span>Alle sechs Spiele laufen direkt in deinem Browser – ohne Anmeldung.</span></div></aside>
+</main>
+<footer class="wrap">© 2026 HS-Games · Spielen · Entdecken · Spaß haben 💜</footer>
+
+<div class="overlay" id="overlay"><section class="gamebox" role="dialog" aria-modal="true" aria-labelledby="gameTitle"><div class="gamehead"><h2 id="gameTitle">Spiel</h2><button class="close" id="close" aria-label="Schließen">×</button></div><div class="gamebar"><span id="status">Bereit?</span><span>Punkte: <strong id="score">0</strong></span><button class="action secondary" id="restart">Neu starten</button></div><div class="gamearea" id="area"></div><div class="hint" id="hint">Viel Spaß!</div></section></div>
+<script>
+const $=s=>document.querySelector(s), overlay=$('#overlay'),area=$('#area'),scoreEl=$('#score'),statusEl=$('#status'),hint=$('#hint'),title=$('#gameTitle');
+let cleanup=()=>{}, current='', score=0;
+function setScore(n){score=n;scoreEl.textContent=n}
+function stop(){cleanup();cleanup=()=>{}}
+function openGame(id){stop();current=id;setScore(0);overlay.classList.add('show');({bubble:gameBubble,blocky:gameBlocky,turbo:gameTurbo,ninja:gameNinja,color:gameColor,maze:gameMaze})[id]()}
+function finish(message){statusEl.textContent=message;hint.textContent='Drücke „Neu starten“, um es noch einmal zu versuchen.'}
+$('#close').onclick=()=>{stop();overlay.classList.remove('show')};
+overlay.addEventListener('click',e=>{if(e.target===overlay){stop();overlay.classList.remove('show')}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('show'))$('#close').click()});
+$('#restart').onclick=()=>openGame(current);
+document.querySelectorAll('[data-game]').forEach(b=>b.onclick=()=>openGame(b.dataset.game));
+function gameBubble(){
+ title.textContent='🫧 Bubble Pop';statusEl.textContent='Tippe so viele Blasen wie möglich!';hint.textContent='Du hast 20 Sekunden. Tippe die Blasen an.';
+ area.innerHTML='<div style="width:100%;text-align:center"><div class="result" id="timer">20</div><div class="bubblefield" id="bubbles"></div></div>';
+ const field=$('#bubbles');let left=20,ended=false;
+ function add(){field.innerHTML='';for(let i=0;i<12;i++){let b=document.createElement('button');b.className='bubble';b.textContent=['🫧','💗','🔵','🟣'][Math.floor(Math.random()*4)];b.onclick=()=>{if(!ended){setScore(score+1);b.remove();if(!field.children.length)add()}};field.append(b)}}
+ add();let t=setInterval(()=>{$('#timer').textContent=--left;if(left<=0){ended=true;clearInterval(t);finish('Zeit vorbei! Du hast '+score+' Punkte.')}},1000);cleanup=()=>clearInterval(t)
+}
+function gameColor(){
+ title.textContent='🎨 Color Match';statusEl.textContent='Finde die Zielfarbe!';hint.textContent='Wähle immer das Feld mit der Farbe oben.';
+ const colors=[['Koralle','#ff789e'],['Blau','#62baf2'],['Grün','#62c99b'],['Lila','#9b7af2'],['Gelb','#ffd05e']];
+ area.innerHTML='<div><div class="target" id="target"></div><div class="tiles" id="tiles"></div></div>';
+ let round=0;function next(){round++;if(round>12){finish('Geschafft! 12 richtige Farben – super!');return}
+ let target=colors[Math.floor(Math.random()*colors.length)];$('#target').textContent='Tippe auf: '+target[0];let options=[...colors].sort(()=>Math.random()-.5);if(!options.includes(target))options[0]=target;
+ $('#tiles').innerHTML='';options.forEach(c=>{let b=document.createElement('button');b.className='tile';b.style.background=c[1];b.setAttribute('aria-label',c[0]);b.onclick=()=>{if(c===target){setScore(score+1);statusEl.textContent='Richtig!';next()}else{statusEl.textContent='Fast! Versuch es noch einmal.'}};$('#tiles').append(b)})}next()
+}
+function canvasGame(name,kind){
+ title.textContent=name;area.innerHTML='<canvas id="cv" width="620" height="300" aria-label="'+name+' Spielfeld"></canvas><div class="controls" id="ctrl"></div>';
+ const c=$('#cv'),ctx=c.getContext('2d');let raf,keys={},ended=false,player={x:90,y:230,v:0},objects=[],frame=0;
+ const buttons=kind==='maze'?[['⬆', 'up'],['⬅','left'],['⬇','down'],['➡','right']]:[['◀','left'],['SPRINGEN','jump'],['▶','right']];
+ buttons.forEach(([label,k])=>{let b=document.createElement('button');b.className='action secondary';b.textContent=label;b.onpointerdown=e=>{e.preventDefault();keys[k]=true};b.onpointerup=b.onpointerleave=()=>keys[k]=false;$('#ctrl').append(b)});
+ function end(msg){ended=true;finish(msg)}
+ function draw(){ctx.clearRect(0,0,620,300);frame++;
+ if(kind==='maze'){
+  const cell=50,maze=[[1,1,1,1,1,1,1,1,1,1,1,1],[1,0,0,0,1,0,0,0,0,0,0,1],[1,0,1,0,1,0,1,1,1,1,0,1],[1,0,1,0,0,0,0,0,0,1,0,1],[1,0,1,1,1,1,1,1,0,1,0,1],[1,0,0,0,0,0,0,1,0,0,0,1],[1,1,1,1,1,1,0,1,1,1,0,1]];
+  ctx.fillStyle='#dcd3ff';ctx.fillRect(0,0,620,300);maze.forEach((row,y)=>row.forEach((v,x)=>{if(v){ctx.fillStyle='#8b70e9';ctx.fillRect(x*cell,y*cell,cell-2,cell-2)}}));ctx.fillStyle='#4bbf91';ctx.fillRect(10*cell+8,6*cell+8,32,32);ctx.fillStyle='#ff77a5';ctx.beginPath();ctx.arc(player.x*cell+25,player.y*cell+25,16,0,7);ctx.fill();
+  if(frame%8===0){let nx=player.x+(keys.right?1:keys.left?-1:0),ny=player.y+(keys.down?1:keys.up?-1:0);if(maze[ny]?.[nx]===0){player.x=nx;player.y=ny}}if(player.x===10&&player.y===6){setScore(1);end('Ausgang gefunden! Du hast das Labyrinth gelöst.')}
+ } else {
+  ctx.fillStyle='#bdeaff';ctx.fillRect(0,0,620,300);ctx.fillStyle='#82d7a9';ctx.fillRect(0,260,620,40);ctx.fillStyle='#fff';for(let i=0;i<4;i++){ctx.beginPath();ctx.arc((i*180+frame*1.2)%700,55+(i%2)*35,22,0,7);ctx.fill()}
+  if(kind==='blocky'){
+   if(keys.left)player.x-=4;if(keys.right)player.x+=4;if(keys.jump&&player.y>=229)player.v=-12;player.v+=.55;player.y+=player.v;if(player.y>230){player.y=230;player.v=0}
+   ctx.fillStyle='#8b66ed';ctx.fillRect(player.x,player.y,30,30);ctx.fillStyle='#ffbf4e';ctx.fillRect(500,220,30,40);if(player.x>480){setScore(1);end('Ziel erreicht! Stark gesprungen.')}
+  }else{
+   if(kind==='turbo'){if(keys.left)player.x-=5;if(keys.right)player.x+=5;player.x=Math.max(45,Math.min(545,player.x))}
+   else {if(keys.jump&&player.y>=230)player.v=-13;player.v+=.65;player.y+=player.v;if(player.y>230){player.y=230;player.v=0}}
+   if(frame%55===0)objects.push({x:640,y:kind==='turbo'?245:235,w:kind==='turbo'?45:28,h:kind==='turbo'?38:25});
+   objects.forEach(o=>{o.x-=kind==='turbo'?6:5;ctx.fillStyle=kind==='turbo'?'#ff9d63':'#ff789e';ctx.fillRect(o.x,o.y,o.w,o.h);if(player.x<o.x+o.w&&player.x+34>o.x&&player.y<o.y+o.h&&player.y+30>o.y)end('Runde vorbei! Punkte: '+score)});
+   objects=objects.filter(o=>o.x>-60);if(!ended){setScore(Math.floor(frame/10));if(frame>600)end('Geschafft! Du hast die Runde überstanden.')}
+   ctx.fillStyle=kind==='turbo'?'#7954ec':'#26335c';ctx.fillRect(player.x,player.y,kind==='turbo'?42:30,30);
+  }
+ }
+ if(!ended)raf=requestAnimationFrame(draw)}
+ player=kind==='maze'?{x:1,y:1}:kind==='turbo'?{x:280,y:230,v:0}:{x:90,y:230,v:0};
+ hint.textContent=kind==='maze'?'Nutze Pfeiltasten oder die Bildschirmknöpfe und finde den grünen Ausgang.':'Nutze ← / → zum Bewegen und Leertaste oder SPRINGEN zum Ausweichen.';
+ const down=e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(e.key)){e.preventDefault();keys[e.key==='ArrowLeft'?'left':e.key==='ArrowRight'?'right':e.key==='ArrowUp'?'up':e.key==='ArrowDown'?'down':'jump']=true}};
+ const up=e=>{keys[e.key==='ArrowLeft'?'left':e.key==='ArrowRight'?'right':e.key==='ArrowUp'?'up':e.key==='ArrowDown'?'down':'jump']=false};
+ document.addEventListener('keydown',down);document.addEventListener('keyup',up);cleanup=()=>{cancelAnimationFrame(raf);document.removeEventListener('keydown',down);document.removeEventListener('keyup',up);keys={}};draw()
+}
+function gameBlocky(){canvasGame('🧱 Blocky Adventure','blocky')}
+function gameTurbo(){canvasGame('🏎️ Turbo Drift','turbo')}
+function gameNinja(){canvasGame('🥷 Ninja Dash','ninja')}
+function gameMaze(){canvasGame('🌀 Maze Master','maze')}
+const search=$('#search'),cards=[...document.querySelectorAll('.game')],filters=[...document.querySelectorAll('.filter')];let category='Alle';
+function filterGames(){let n=0;cards.forEach(c=>{let ok=(category==='Alle'||c.dataset.cat===category)&&c.dataset.name.toLowerCase().includes(search.value.toLowerCase());c.style.display=ok?'':'none';if(ok)n++});$('#empty').style.display=n?'none':'block'}
+search.oninput=filterGames;filters.forEach(b=>b.onclick=()=>{category=b.dataset.cat;filters.forEach(x=>x.classList.toggle('active',x===b));filterGames()});
+</script>
+</body></html>
